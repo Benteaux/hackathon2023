@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Scurvy, Ay?</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="scripts/main.js"></script>
+  <link rel = "icon" href = "orangeicon.ico"/>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F1F1F1;
+      color: #222;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      
+      color: #FFD700;
+      text-align: center;
+      font-size: 32px;
+      font-family: 'piratefont'
+    }
+
+    h2 {
+      color: #ff9100;
+      text-align: center;
+      font-size: 40px;
+      font-family: 'piratefont'
+      
+
+    }
+    
+    h3 {
+      color: #FFD700;
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+      font-family: 'piratefont'
+    }
+    
+    p {
+      text-align: justify;
+      margin-bottom: 20px;
+      color: #CCC;
+      font-family: 'piratefont'
+      
+    }
+    
+    form {
+        background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+
+    }
+    
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #CCC;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    
+    .button {
+      text-align: center;
+    }
+    
+    button[type="submit"] {
+      background-color: #FFD700;
+      color: #222;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      
+    }
+    
+    #oCount {
+      color: #FFD700;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    #oranges {
+      color: #FFD700;
+      font-size: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: 'piratefont'
+    }
+
+    ul {
+        color :#CCC;
+        list-style: none
+    }
+
+    div {
+      background-color: #222;
+      border-radius: 30px;
+      padding: 20px;
+    }
+   @font-face {
+    font-family: 'piratefont';  
+    src: url('piratefont.ttf');
+  }
+
+  body {
+    font-family: 'piratefont'; 
+  }
+
+    
+    </style>
+    
+    
+    
+</head>
+
+<body style = "background-image: url('water3.jpg'); background-repeat: no-repeat;
+background-size: cover; min-height: 100vh; margin: 0; padding: 0;">
+
+
+  <div class="container">
+    <h1>SCURVY! ARGHHH!</h1>
+    <h3>WARDIN' OFF TA' ILLNESS O' TA' SEVEN SEAS</h3>
+
+    <p>Scurvy be the most wretched illness a swashbuckler can bear. Most fortunately, our crewmen, afta' much piratin' and
+      lootin' o' local research institutions, have found a machine learning algorithm capable o' calculatin' exactly how
+      many oranges ye got ta' fit in yer gullet o'er the course o' yer journey.</p>
+
+    <p>Simply insert yer age, biological sex, weight, mother's maiden name, days planned fer ta' journey, and yer SSN, and
+      ye'll be all set to scare off the scurves.</p>
+
+    <form>
+      <ul>
+        <li>
+          <label for="age">Age:</label>
+          <input type="text" id="age" name="user_age" />
+        </li>
+        <li>
+          <label for="sex">Sex:</label>
+          <select name="user_sex" id="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </li>
+        <li>
+          <label for="weight">Weight (lbs):</label>
+          <input type="text" id="weight" name="weight" />
+        </li>
+        <li>
+          <label for = "maiden-name">Mother's Maiden Name:</label>
+          <input type = "text" id = "maiden-name" name = "maiden-name" />
+        </li>
+        <li>
+          <label for="days">Days Fer Journey:</label>
+          <input type="text" id="days" name="user_days" />
+        </li>
+        <li>
+          <label for = "ssn">SSN: </label>
+          <input type = "password" id = "ssn" name = "ssn" />
+        </li>
+        <li class="button">
+          <button type="button" onclick="dispOranges()">Calculate!</button>
+        </li>
+      </ul>
+    </form>
+
+    <h2 id="orangeCount">Orange Count:</h2>
+    <div id="oranges"></div>
+    <script>
+      function dispOranges() {
+        var age = parseInt(document.getElementById("age").value);
+  var weight = parseInt(document.getElementById("weight").value);
+  var days = parseInt(document.getElementById("days").value);
+
+  var orangeTotal = -2.70212807 - 0.01372711 * age + 0.16020587 * weight + 1.05718778 * days - 26.58007122938251;
+          if (orangeTotal <= 0)
+          {
+            document.getElementById('oranges').innerHTML = "0";
+          }
+          else if (orangeTotal !== orangeTotal)
+          {
+            document.getElementById("oranges").innerHTML = "Please insert proper values";
+          }
+          else
+          {
+            document.getElementById('oranges').innerHTML = String(Math.ceil(orangeTotal));
+          }
+          
+      }
+    </script>
+    
+  </div>
+
+  
+</body>
+
+</html>
